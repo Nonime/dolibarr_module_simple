@@ -62,7 +62,7 @@ class Actionssimple
 	function formObjectOptions($parameters, &$object, &$action, $hookmanager)
 	{
 //TODO méthode à copier
-
+        
 		$error = 0; // Error counter
 		$myvalue = ''; // A result value
 
@@ -70,7 +70,7 @@ class Actionssimple
 		{
 		  
 		  echo '<tr>
-		  	<td>Hook 208000</td><td colspan="'.$parameters['colspan'].'">Affichez ici le code postal du tiers du contact</td>
+		  	<td>Hook 208000</td><td colspan="'.$parameters['colspan'].'">'.$object->zip.'</td>
 		  </tr>';
 		}
 
