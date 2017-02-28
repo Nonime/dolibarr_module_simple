@@ -66,15 +66,30 @@ class Actionssimple
 		$error = 0; // Error counter
 		$myvalue = ''; // A result value
 
-		if (in_array('contactcard', explode(':', $parameters['context'])))
+                if (in_array('contactcard', explode(':', $parameters['context'])))
 		{
+  		  global $db,$langs;
+			global $db, $langs;
+			$societe = new Societe($db);
+			$societe->fetch($object->socid);
 		  
-		  echo '<tr>
-		  	<td>Hook 208000</td><td colspan="'.$parameters['colspan'].'">'.$object->zip.'</td>
-		  </tr>';
+		  	echo '<tr>
+		  			<td>'. $langs->trans('Zip') . '</td>
+		  			<td colspan="'.$parameters['colspan'].'">'. $societe->zip.'</td>
+	  			</tr>';
 		}
-
-		if (! $error)
+          
+                
+		if (in_array('thirdpartycard', explode(':', $parameters['context'])))
+  		{
+  		  global $db,$langs;
+                dol_include_once('/simple/class/risque.php');
+  		  echo '<tr>
+ 		  	<td>Risque</td>
+			<td colspan="'.$parameters['colspan'].'">'.risque::calc($object).'</td>
+  		  </tr>';
+  		}
+                if (! $error)
 		{
 			
 			return 0; // or return 1 to replace standard code
@@ -84,5 +99,8 @@ class Actionssimple
 			$this->errors[] = 'Error message';
 			return -1;
 		}
-	}
+                
+            }
 }
+
+

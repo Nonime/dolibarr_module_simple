@@ -3,18 +3,20 @@
  * Script créant et vérifiant que les champs requis s'ajoutent bien
  */
 
-if(!defined('INC_FROM_DOLIBARR')) {
-	define('INC_FROM_CRON_SCRIPT', true);
-
-	require('../config.php');
-
-}
-
 
 dol_include_once('/simple/class/simple.class.php');
 
 $PDOdb=new TPDOdb;
+global $db;
 
-$o=new TSimple208000($db);
+$o=new TSimple208000;
 $o->init_db_by_vars($PDOdb);
 
+  
+  
+dol_include_once('/core/class/extrafields.class.php');
+$extraFields = new ExtraFields($db);
+$extraFields->addExtraField('risque', 'risque', 'int', 0, 10, 'societe');
+$extraFields->addExtraField('NomPDG', 'risque', 'varchar', 0, 250, 'societe');
+
+ 
