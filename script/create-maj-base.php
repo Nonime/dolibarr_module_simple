@@ -16,7 +16,7 @@ $o->init_db_by_vars($PDOdb);
   
 dol_include_once('/core/class/extrafields.class.php');
 $extraFields = new ExtraFields($db);
-$extraFields->addExtraField('risque', 'risque', 'int', 0, 10, 'societe');
-$extraFields->addExtraField('NomPDG', 'risque', 'varchar', 0, 250, 'societe');
+$extraFields->addExtraField('Risque', 'risque', 'int', 0, 10, 'societe');
+$extraFields->addExtraField('NomPDG', 'nompdg', 'varchar', 0, 250, 'societe');
 
  

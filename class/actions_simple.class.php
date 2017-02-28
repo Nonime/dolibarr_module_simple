@@ -86,7 +86,7 @@ class Actionssimple
                 dol_include_once('/simple/class/risque.php');
   		  echo '<tr>
  		  	<td>Risque</td>
-			<td colspan="'.$parameters['colspan'].'">'.risque::calc($object).'</td>
+			<td colspan="'.$parameters['colspan'].'">'.Risque::calc($object).'</td>
   		  </tr>';
   		}
                 if (! $error)
